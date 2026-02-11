@@ -93,6 +93,7 @@
       display:flex; 
       gap:6px; 
       margin-top:8px; 
+      margin-bottom: 8px;
     }
     
     button{
@@ -377,7 +378,7 @@
 
       <div class="btnbar">
         <button id="clear">Clear Text</button>
-        <button id="export">Export All Json</button>
+        <button id="export">Export All {Json}</button>
       </div>
 
       <div id="exportOut"></div>
@@ -751,7 +752,7 @@
       const out = document.getElementById("exportOut");
       const json = JSON.stringify(cellDB, null, 2);
       out.innerHTML = `
-        <div class="pill ok">Exported JSON</div>
+        <div class="pill ok">Exported JSON Knowledge DB</div>
         <textarea readonly>${json.replace(/</g, "&lt;")}</textarea>
       `;
     });
