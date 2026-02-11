@@ -39,9 +39,8 @@
     }
     
     #panel{
-      width: 35%;
+      width: 30%;
       min-width: 280px;
-      max-width: 400px;
       border-left:1px solid var(--line); 
       background:var(--panel);
       padding:12px; 
@@ -116,6 +115,7 @@
     
     textarea{
       width:100%; 
+      height: 40%;
       min-height: 120px;
       background:#0c142c; 
       color:var(--text);
@@ -126,7 +126,47 @@
       font-size:10px; 
       line-height:1.4;
       resize: vertical;
+      padding-right: 40px;
     }
+
+    .copy-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  min-width: 32px;
+  min-height: 32px;
+  width: 32px;
+  height: 32px;
+  padding: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(16, 26, 56, 0.9);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  z-index: 10;
+}
+
+.copy-btn:hover, .copy-btn:active {
+  background: #142045;
+  border-color: var(--sel);
+}
+
+.copy-btn.copied {
+  background: var(--ok);
+  border-color: var(--ok);
+}
+
+.copy-btn svg {
+  color: var(--text);
+  transition: color 0.2s ease;
+}
+
+.copy-btn.copied svg {
+  color: #fff;
+}
     
     svg{ 
       width:100%; 
@@ -325,11 +365,19 @@
       <h2 style="margin-top:10px;">Content (editable)</h2>
       <div class="hint">You can edit and export JSON.</div>
       <div id="contentView"></div>
-      <textarea id="content" placeholder="Select a full triple (C+P+M) to view/edit its content..."></textarea>
+      <div style="position: relative;">
+  <textarea id="content" placeholder="Select a full triple (C+P+M) to view/edit its content..."></textarea>
+  <button id="copyBtn" class="copy-btn" title="Copy content" style="display: none;">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+    </svg>
+  </button>
+</div>
 
       <div class="btnbar">
-        <button id="clear">Clear</button>
-        <button id="export">Export</button>
+        <button id="clear">Clear Text</button>
+        <button id="export">Export All Json</button>
       </div>
 
       <div id="exportOut"></div>
@@ -448,6 +496,7 @@
     }
 
     function updatePanel() {
+      const copyBtn = document.getElementById("copyBtn");
       const status = document.getElementById("status");
       const triple = document.getElementById("triple");
       const content = document.getElementById("content");
@@ -478,6 +527,8 @@
           document.getElementById("contentView").innerHTML =
             `<math><mi>f</mi> <mi>(</mi> <mi>c, </mi><mi>m, </mi>,<mi>p</mi><mi>)</mi></math> = <strong>${v[0]}</strong>`;
           content.value = v.slice(1).join("\n");
+          content.disabled = false;
+          copyBtn.style.display = "flex";
         } else {
           document.getElementById("contentView").innerHTML =
             `<math><mi>f</mi> <mi>(</mi> <mi>c, </mi><mi>m, </mi>,<mi>p</mi><mi>)</mi></math> = <em>No data</em>`;
@@ -494,6 +545,9 @@
           "<math><mi>f</mi> <mi>(</mi> <mi>c, </mi><mi>m, </mi>,<mi>p</mi><mi>)</mi></math> = null";
         content.value = "";
         content.disabled = true;
+        content.dataset.title = "";
+      content.disabled = true;
+      copyBtn.style.display = "none";
       }
     }
 
@@ -639,6 +693,59 @@
      * ====== Buttons ======
      */
     document.getElementById("clear").addEventListener("click", () => clearSelection());
+    document.getElementById("copyBtn").addEventListener("click", async () => {
+  const content = document.getElementById("content");
+  const copyBtn = document.getElementById("copyBtn");
+  
+  // Get the current triple key
+  const k = keyForTriple();
+  if (!k) return;
+  
+  // Get title from cellDB[k][0]
+  const v = cellDB[k];
+  const title = (Array.isArray(v) && v.length > 0) ? v[0] : "";
+  
+  // Combine title and textarea content
+  const textToCopy = title ? `${title}\n\n${content.value}` : content.value;
+  
+  try {
+    // Check if clipboard API is available
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      await navigator.clipboard.writeText(textToCopy);
+    } else {
+      // Fallback method
+      const tempTextarea = document.createElement('textarea');
+      tempTextarea.value = textToCopy;
+      tempTextarea.style.position = 'fixed';
+      tempTextarea.style.opacity = '0';
+      document.body.appendChild(tempTextarea);
+      tempTextarea.select();
+      document.execCommand('copy');
+      document.body.removeChild(tempTextarea);
+    }
+    
+    // Visual feedback
+    copyBtn.classList.add("copied");
+    copyBtn.innerHTML = `
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <polyline points="20 6 9 17 4 12"></polyline>
+      </svg>
+    `;
+    
+    setTimeout(() => {
+      copyBtn.classList.remove("copied");
+      copyBtn.innerHTML = `
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+          <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+        </svg>
+      `;
+    }, 1500);
+  } catch (err) {
+    console.error("Failed to copy:", err);
+    alert("Copy failed. Please try again.");
+  }
+});
 
     document.getElementById("export").addEventListener("click", () => {
       const out = document.getElementById("exportOut");
