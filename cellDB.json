@@ -40,7 +40,8 @@
   ],
   "Data & Computation|Challenge|SPM": [
     "Platform-level Data & Computation Challenge:",
-    "To be filled"
+    "- Ensuring trustworthiness and correctness of computation nodes in distributed systems is difficult.",
+    "- for example : In a cloud-based distributed analytics system, compute nodes may be dynamically provisioned from shared infrastructure. The client cannot verify whether each node executed the assigned computation correctly."
   ],
   "Data & Computation|Challenge|SRM": [
     "Rules-level Data & Computation Challenge:",
@@ -53,7 +54,8 @@
 
   "Data & Computation|Issue|SUM": [
     "User-level Data & Computation Issue:",
-    "To be filled"
+    "Data integrity and conﬁdentiality",
+    ""
   ],
   "Data & Computation|Issue|SAM": [
     "Application-level Data & Computation Issue:",
@@ -61,8 +63,12 @@
   ],
   "Data & Computation|Issue|SPM": [
     "Platform-level Data & Computation Issue:",
-    "To be filled"
-  ],
+    "Integrity of distributed computation is not guaranteed because execution occurs in an untrusted environment.",
+    "- Malicious Node Result Manipulation",
+    "- Compromised Execution Environment (Atatck Scenario Example : An attacker gains root access to a cloud VM participating in distributed processing and modifies intermediate dataset values before they are returned to the coordinator)",
+    "- Data Shuffle Interception Without Integrity Protection (Example : In a misconfigured cluster with data integrity verification, an attacker intercepts traffic and injects altered computation data)",
+    "- Byzantine Worker Behavior (Example : In distributed machine learning, a node sends crafted gradient updates that subtly bias the model outcome toward adversarial objectives.)"
+    ],
   "Data & Computation|Issue|SRM": [
     "Rules-level Data & Computation Issue:",
     "To be filled"
