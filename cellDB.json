@@ -351,7 +351,7 @@
     "title": "Platform-level Data & Computation Solution",
     "sections": [
       {
-        "headline": "Example protocol-level solutions for cloud data storage integrity.",
+        "headline": "Protocol-level solutions for cloud data storage integrity [1]",
         "points": [
           {
             "label": "Remote data integrity verification protocol (Kumar & Subramanian, 2011)",
@@ -368,7 +368,7 @@
     ],
     "refs": [
       {
-        "title": "An Efficient and Secure Protocol for Ensuring Data Storage Security in Cloud Computing",
+        "title": "[1] An Efficient and Secure Protocol for Ensuring Data Storage Security in Cloud Computing",
         "link": "https://www.ijcsi.org/papers/IJCSI-8-6-1-261-274.pdf"
       }
     ]
@@ -377,23 +377,50 @@
     "title": "Rules-level Data & Computation Solution",
     "sections": [
       {
-        "headline": "To be filled",
-        "points": []
+        "headline": "",
+        "points": [
+          {
+            "label": "",
+            "text": "",
+            "example": ""
+          }
+        ]
       }
     ],
     "tags": [],
     "refs": []
   },
-  "Data & Computation|Solution|SDM": {
+ "Data & Computation|Solution|SDM": {
     "title": "Detection-level Data & Computation Solution",
     "sections": [
       {
-        "headline": "To be filled",
-        "points": []
+        "headline": "Secure Storage and Computation Auditing Scheme [1]",
+        "points": [
+          {
+            "label": "TPA spot-check",
+            "text": "Third-party auditor randomly samples ~15-33 tasks to detect cloud cheating on storage and computation",
+            "example": "Check 30 random records out of 1M"
+          },
+          {
+            "label": "Result commitment",
+            "text": "Merkle tree locks all results before TPA reveals which tasks it will sample",
+            "example": "Cloud can't retroactively fix a bad result after seeing the challenge"
+          },
+          {
+            "label": "Privacy discouragement",
+            "text": "Designated verifier signature makes stolen data unprovable to buyers",
+            "example": "Stolen medical records can't be sold authenticity can't be verified without private key"
+          }
+        ]
       }
     ],
-    "tags": [],
-    "refs": []
+    "tags": ["cloud", "computation-auditing", "storage-integrity", "TPA", "SecCloud"],
+    "refs": [
+      {
+        "title": "[1] Security and privacy for storage and computation in cloud computing",
+        "link": "https://www.sciencedirect.com/science/article/pii/S0020025513003320"
+      }
+    ]
   },
   "Virtualization|Requirement|SUM": {
     "title": "User-level Virtualization Requirement",
