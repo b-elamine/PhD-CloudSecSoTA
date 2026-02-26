@@ -596,16 +596,16 @@
           {
             "label": "The problem this solves",
             "text": "When choosing where to deploy a secure application, the developer has no structured way to know which cloud providers actually satisfy the security requirements. Provider documentation is unstructured, inconsistent, and not machine-readable.",
-            "example": "Developer asks: does AWS support IS-07 data integrity control? — answer is buried in a 200-page PDF"
+            "example": "Developer asks: does AWS support IS-07 data integrity control? answer is buried in a 200-page PDF"
           },
           {
             "label": "The solution: structured provider security profiles",
-            "text": "Each cloud provider gets a formal CAMEL model that lists exactly which security controls it supports. These profiles are populated automatically from CSA CAIQ questionnaire answers — the industry standard security self-assessment for cloud providers — by checking which controls received positive responses above a defined threshold",
-            "example": "AWS CAIQ answers are parsed — for each security control, if enough questions are answered positively, that control is added to the AWS provider security profile"
+            "text": "Each cloud provider gets a formal CAMEL [2] model that lists exactly which security controls it supports. These profiles are populated automatically from Cloud Security Alliance (CSA) CAIQ [3] questionnaire answers the industry standard security self-assessment for cloud providers, by checking which controls received positive responses above a defined threshold",
+            "example": "AWS CAIQ answers are parsed, for each security control, if enough questions are answered positively, that control is added to the AWS provider security profile"
           },
           {
             "label": "Deployment plan generated only from matching providers",
-            "text": "The deployment planner compares the application's security requirements against all provider profiles and generates a deployment plan using only providers that satisfy every required control — automatically, without human comparison",
+            "text": "The deployment planner compares the application's security requirements against all provider profiles and generates a deployment plan using only providers that satisfy every required control, automatically, without human comparison",
             "example": "Application needs confidentiality + data isolation — planner generates a deployment plan using only the 2 providers out of 10 whose profiles declare both capabilities"
           }
         ]
@@ -616,13 +616,20 @@
       "CAIQ",
       "CCM",
       "deployment-planning",
-      "provider-matching",
-      "SPM"
+      "provider-matching"
     ],
     "refs": [
       {
         "title": "[1] An Integrated Meta-model for Cloud Application Security Modelling — Kritikos & Massonet, ScienceDirect 2016",
         "link": "https://www.sciencedirect.com/science/article/pii/S1877050916320993"
+      },
+      {
+        "title": "[2] Cloud Application Modeling and Execution Language - CAMEL",
+        "link": "https://link.springer.com/article/10.1186/s13677-019-0138-7"
+      },
+      {
+        "title": "[3] Cloud Controls Matrix Assessment (CSA questionnaire — cloud providers fill it to prove their security capabilities)",
+        "link": ""
       }
     ]
   },
