@@ -855,12 +855,23 @@
     "title": "Detection-level Internet & Services Solution",
     "sections": [
       {
-        "headline": "To be filled",
-        "points": []
-      }
-    ],
-    "tags": [],
-    "refs": []
+        "headline": "REST API Security Property Verification [1]",
+          "points": [
+    {
+      "label": "Stateful fuzzing + active checkers",
+      "text": "Extends REST API fuzzer with 4 rule checkers that actively generate tests to detect security violations beyond crash detection",
+      "example": "Detects deleted resource still accessible (use-after-free), or user A accessing user B's resources (namespace violation)"
+    }
+  ],
+  "tags": ["REST-API", "fuzzing", "active-checking", "cloud-services", "SDM"],
+  "refs": [
+    {
+      "title": "[1] Checking Security Properties of Cloud Services REST APIs",
+      "link": "https://www.microsoft.com/en-us/research/wp-content/uploads/2019/02/paper2.pdf"
+    }
+  ]
+}
+]
   },
   "Network|Requirement|SUM": {
     "title": "User-level Network Requirement",
