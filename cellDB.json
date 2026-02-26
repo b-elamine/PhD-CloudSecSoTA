@@ -578,23 +578,74 @@
     "title": "Platform-level Virtualization Solution",
     "sections": [
       {
-        "headline": "To be filled",
-        "points": []
+        "headline": "Provider Security Capability Matching for Deployment [1]",
+        "points": [
+          {
+            "label": "The problem this solves",
+            "text": "When choosing where to deploy a secure application, the developer has no structured way to know which cloud providers actually satisfy the security requirements. Provider documentation is unstructured, inconsistent, and not machine-readable.",
+            "example": "Developer asks: does AWS support IS-07 data integrity control? — answer is buried in a 200-page PDF"
+          },
+          {
+            "label": "The solution: structured provider security profiles",
+            "text": "Each cloud provider gets a formal CAMEL model that lists exactly which security controls it supports. These profiles are populated automatically from CSA CAIQ questionnaire answers — the industry standard security self-assessment for cloud providers — by checking which controls received positive responses above a defined threshold",
+            "example": "AWS CAIQ answers are parsed — for each security control, if enough questions are answered positively, that control is added to the AWS provider security profile"
+          },
+          {
+            "label": "Deployment plan generated only from matching providers",
+            "text": "The deployment planner compares the application's security requirements against all provider profiles and generates a deployment plan using only providers that satisfy every required control — automatically, without human comparison",
+            "example": "Application needs confidentiality + data isolation — planner generates a deployment plan using only the 2 providers out of 10 whose profiles declare both capabilities"
+          }
+        ]
       }
     ],
-    "tags": [],
-    "refs": []
+    "tags": [
+      "CAMEL",
+      "CAIQ",
+      "CCM",
+      "deployment-planning",
+      "provider-matching",
+      "SPM"
+    ],
+    "refs": [
+      {
+        "title": "[1] An Integrated Meta-model for Cloud Application Security Modelling — Kritikos & Massonet, ScienceDirect 2016",
+        "link": "https://www.sciencedirect.com/science/article/pii/S1877050916320993"
+      }
+    ]
   },
   "Virtualization|Solution|SRM": {
-    "title": "Rules-level Virtualization Solution",
+    "title": "Rules-level Virtualization Challenge",
     "sections": [
       {
-        "headline": "To be filled",
-        "points": []
+        "headline": "Security-Aware Reconfiguration Rules via SRL Extension [1]",
+        "points": [
+          {
+            "label": "Security rules that watch and react automatically",
+            "text": "The paper extends the CAMEL Scalability Rule Language (SRL) to support security-oriented rules. When a security SLO is violated at runtime, for example a measured metric drops below its threshold, a reconfiguration rule fires automatically and moves the application to a more capable provider",
+            "example": "Security rule: IF incident handling rate < 95% THEN migrate application to provider B which has a higher security capability score"
+          },
+          {
+            "label": "Security controls as hard deployment filters",
+            "text": "Before deployment even starts, required security controls act as hard constraints — any cloud provider that does not declare support for the required controls is automatically excluded from the candidate list",
+            "example": "Application requires 'data encryption at rest' — the system eliminates every provider that did not declare this capability, without the developer doing anything manually"
+          }
+        ]
       }
     ],
-    "tags": [],
-    "refs": []
+    "tags": [
+      "SRL",
+      "reconfiguration",
+      "security-controls",
+      "CCM",
+      "runtime",
+      "SRM"
+    ],
+    "refs": [
+      {
+        "title": "[1] An Integrated Meta-model for Cloud Application Security Modelling — Kritikos & Massonet, ScienceDirect 2016",
+        "link": "https://www.sciencedirect.com/science/article/pii/S1877050916320993"
+      }
+    ]
   },
   "Virtualization|Solution|SDM": {
     "title": "Detection-level Virtualization Solution",
@@ -1503,78 +1554,28 @@
       }
     ]
   },
+
   "Software|Solution|SPM": {
     "title": "Platform-level Software Solution",
     "sections": [
       {
-        "headline": "Provider Security Capability Matching for Deployment [1]",
-        "points": [
-          {
-            "label": "The problem this solves",
-            "text": "When choosing where to deploy a secure application, the developer has no structured way to know which cloud providers actually satisfy the security requirements. Provider documentation is unstructured, inconsistent, and not machine-readable.",
-            "example": "Developer asks: does AWS support IS-07 data integrity control? — answer is buried in a 200-page PDF"
-          },
-          {
-            "label": "The solution: structured provider security profiles",
-            "text": "Each cloud provider gets a formal CAMEL model that lists exactly which security controls it supports. These profiles are populated automatically from CSA CAIQ questionnaire answers — the industry standard security self-assessment for cloud providers — by checking which controls received positive responses above a defined threshold",
-            "example": "AWS CAIQ answers are parsed — for each security control, if enough questions are answered positively, that control is added to the AWS provider security profile"
-          },
-          {
-            "label": "Deployment plan generated only from matching providers",
-            "text": "The deployment planner compares the application's security requirements against all provider profiles and generates a deployment plan using only providers that satisfy every required control — automatically, without human comparison",
-            "example": "Application needs confidentiality + data isolation — planner generates a deployment plan using only the 2 providers out of 10 whose profiles declare both capabilities"
-          }
-        ]
+        "headline": "To be filled",
+        "points": []
       }
     ],
-    "tags": [
-      "CAMEL",
-      "CAIQ",
-      "CCM",
-      "deployment-planning",
-      "provider-matching",
-      "SPM"
-    ],
-    "refs": [
-      {
-        "title": "[1] An Integrated Meta-model for Cloud Application Security Modelling — Kritikos & Massonet, ScienceDirect 2016",
-        "link": "https://www.sciencedirect.com/science/article/pii/S1877050916320993"
-      }
-    ]
+    "tags": [],
+    "refs": []
   },
   "Software|Solution|SRM": {
     "title": "Rules-level Software Solution",
     "sections": [
       {
-        "headline": "Security-Aware Reconfiguration Rules via SRL Extension [1]",
-        "points": [
-          {
-            "label": "Security rules that watch and react automatically",
-            "text": "The paper extends the CAMEL Scalability Rule Language (SRL) to support security-oriented rules. When a security SLO is violated at runtime, for example a measured metric drops below its threshold, a reconfiguration rule fires automatically and moves the application to a more capable provider",
-            "example": "Security rule: IF incident handling rate < 95% THEN migrate application to provider B which has a higher security capability score"
-          },
-          {
-            "label": "Security controls as hard deployment filters",
-            "text": "Before deployment even starts, required security controls act as hard constraints — any cloud provider that does not declare support for the required controls is automatically excluded from the candidate list",
-            "example": "Application requires 'data encryption at rest' — the system eliminates every provider that did not declare this capability, without the developer doing anything manually"
-          }
-        ]
+        "headline": "To be filled",
+        "points": []
       }
     ],
-    "tags": [
-      "SRL",
-      "reconfiguration",
-      "security-controls",
-      "CCM",
-      "runtime",
-      "SRM"
-    ],
-    "refs": [
-      {
-        "title": "[1] An Integrated Meta-model for Cloud Application Security Modelling — Kritikos & Massonet, ScienceDirect 2016",
-        "link": "https://www.sciencedirect.com/science/article/pii/S1877050916320993"
-      }
-    ]
+    "tags": [],
+    "refs": []
   },
   "Software|Solution|SDM": {
     "title": "Detection-level Software Solution",
