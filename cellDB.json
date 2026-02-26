@@ -346,7 +346,7 @@
         "link": "https://www.ijcsi.org/papers/IJCSI-8-6-1-261-274.pdf"
       },
       {
-        "title": "[1] A Framework for Secure Live Migration of Virtual Machines — Anala, Jyoti, Shobha — IEEE ICACCI 2013",
+        "title": "[2] A Framework for Secure Live Migration of Virtual Machines — Anala, Jyoti, Shobha — IEEE ICACCI 2013",
         "link": "https://ieeexplore.ieee.org/document/6637166"
       }
     ]
@@ -1351,7 +1351,7 @@
     "tags": [],
     "refs": []
   },
-  "AccessControl|Solution|SPM": {
+  "Access Control|Solution|SPM": {
     "title": "Platform-level Access Control Solution",
     "sections": [
       {
