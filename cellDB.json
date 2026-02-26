@@ -1487,7 +1487,7 @@
           "text": "Captures high and low-level security requirements as a formal meta-model, used to drive cloud application deployment and reconfiguration rules automatically.",
           "example": "OCL constraints enforce security semantics — e.g., encrypted storage required for sensitive data classes"
         }
-      ],
+      ]
       }
     ],
     "tags": [],
