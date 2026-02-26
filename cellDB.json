@@ -623,29 +623,29 @@
     "sections": [
       {
         "headline": "REST API Security Properties Must Be Enforced at the Application Layer [1]",
-         "points": [
-        {
-          "label": "Use-After-Free",
-          "text": "A deleted resource must no longer be accessible via any API operation. The application must enforce resource lifecycle consistency. Any DELETE operation must invalidate all subsequent GET/PUT/PATCH on the same resource path"
-        },
-        {
-          "label": "Resource-Leak Prevention",
-          "text": "A failed resource creation must leave no side-effects in backend state. The application must guarantee atomicity of creation operations. Failed POST/PUT must not register the resource name, quota, or any metadata in backend state"
-        },
-        {
-          "label": "Resource-Hierarchy Isolation",
-          "text": "A child resource must only be accessible through its legitimate parent. Cross-parent access must be rejected at the application logic level. Resource path /parentA/children/child1 must not be accessible via /parentB/children/child1"
-        },
-        {
-          "label": "User-Namespace Isolation",
-          "text": "Resources created under one user token must not be accessible by another user token. Tenant isolation must be enforced at the API layer. Every resource access must validate that the requesting token matches the namespace of the resource owner"
-        }
-      ]
+        "points": [
+          {
+            "label": "Use-After-Free",
+            "text": "A deleted resource must no longer be accessible via any API operation. The application must enforce resource lifecycle consistency. Any DELETE operation must invalidate all subsequent GET/PUT/PATCH on the same resource path"
+          },
+          {
+            "label": "Resource-Leak Prevention",
+            "text": "A failed resource creation must leave no side-effects in backend state. The application must guarantee atomicity of creation operations. Failed POST/PUT must not register the resource name, quota, or any metadata in backend state"
+          },
+          {
+            "label": "Resource-Hierarchy Isolation",
+            "text": "A child resource must only be accessible through its legitimate parent. Cross-parent access must be rejected at the application logic level. Resource path /parentA/children/child1 must not be accessible via /parentB/children/child1"
+          },
+          {
+            "label": "User-Namespace Isolation",
+            "text": "Resources created under one user token must not be accessible by another user token. Tenant isolation must be enforced at the API layer. Every resource access must validate that the requesting token matches the namespace of the resource owner"
+          }
+        ]
       }
     ],
     "tags": [],
     "refs": [
-       {
+      {
         "title": "[1] Security and privacy for storage and computation in cloud computing",
         "link": "https://www.sciencedirect.com/science/article/pii/S0020025513003320"
       }
@@ -1477,24 +1477,29 @@
     "refs": []
   },
   "Software|Solution|SAM": {
-    "title": "Application-level Software Solution",
+    "title": "SAM-level Solution — Security Requirements Modeling for Cloud Applications",
     "sections": [
       {
-        "headline": "MDE Security Meta-model for Cloud Application Deployment and Reconfiguration [1]",
+        "headline": "Security DSL for Application-Level Requirement Specification [1]",
         "points": [
-        {
-          "label": "Security-aware MDE",
-          "text": "Captures high and low-level security requirements as a formal meta-model, used to drive cloud application deployment and reconfiguration rules automatically.",
-          "example": "OCL constraints enforce security semantics — e.g., encrypted storage required for sensitive data classes"
-        }
-      ]
+          {
+            "label": "The solution: a formal security language built into the app model",
+            "text": "The paper introduces a Domain-Specific Language (DSL) that lets developers express security requirements directly inside the application model at two levels: (1) high-level controls like 'enforce access control' and (2) measurable SLOs like 'incidents must be resolved within 1 hour in 95% of cases'",
+            "example": "Instead of a Word document, the developer writes a formal security block in the app model, the deployment engine reads it directly and acts on it"
+          },
+          {
+            "label": "OCL constraints catch mistakes before deployment",
+            "text": "OCL (Object Constraint Language) rules are added on top of the DSL to automatically validate that the security model makes sense, if a requirement references a metric that does not exist, the system rejects the model immediately at design time, before any cloud resource is touched",
+            "example": "Developer accidentally links a security SLO to a non-existent metric, OCL catches it instantly, deployment never starts"
+          }
+        ]
       }
     ],
-    "tags": [],
+    "tags": ["MDE", "DSL", "OCL", "security-requirements", "SAM"],
     "refs": [
       {
-        "title": "[1] An Integrated Meta-Model for Cloud Application Security Modelling",
-        "link": "https://pdf.sciencedirectassets.com/280203/1-s2.0-S1877050916X00221/1-s2.0-S1877050916320993/main.pdf?X-Amz-Security-Token=IQoJb3JpZ2luX2VjEFkaCXVzLWVhc3QtMSJHMEUCIEA4m99V7tJ3xTn4BZFDNHHxPmZP0GOXKikB3cvicumBAiEA85X6uxjuuuG4WKw3apvqxuc5Q9nGTIPDwHraxmFD8dEqswUIIhAFGgwwNTkwMDM1NDY4NjUiDLombD%2FsXs7X8KRvCiqQBfQqyRHXJCKvlwSNT6utnOjpi58smT9I2Qn0e6lrVkvSHaj4LWNoR42wvwJl3rAc0jcjJ0f%2FnEdho9uMUU6JOzZxkXvUpXo1%2BQPyg6Ji8Br1aey5F3meZYI7FGJRC7LFxfGyZxOkoHuLodO10RsweefaXDRtvRs0JYmn2fKV5Poj3kC51KU0svQGWsc2v%2B%2BMt86QVDQpJwhDNAfu%2BJ0evXEGVHWIIGdmLa%2BmH1%2B8jzB8anfRfYSCfde8qf7wBTwViDo6VRdKR%2FE7c1TL2w1Ri%2FAhhyrz3DBnQS0nAP4S60eVkj%2BL4INAae3gvKk5FrEn78iR0lkSYE%2BQ5%2FasNh3CSfsj48jHvst3oiKDFJfV3mhYAmFUAiW5bKpw5cJJVWNou%2BOGBkVRAXvudFkz%2BiTUFspbLIBJsrsWyXKjG%2B9Jlc6zFvTY28rnsUoU3E%2BjWHaviLAB%2Fs1%2FfW30hVUcM5bY3wFpmPQ5bJPp7COFq00dkzw3LG8%2FCSxkH2uImgbBXWWPv8l6OWs8U%2B8r2se6HvnIZZKHzl4QIQib62b3phmgFcjccNmhec3%2FxrNPM%2Fwn7joObuiSQgbRsB8fNxujYdkPBB7PhVeWtafxM3TMeDDa51ENYt9A1pM98za%2Fp1l3aUubR8nG7sSKdlaqg1%2BIlNfpX7sQfIMb8MsE%2BsEBhcMxO5hfYieWQYhVwinjB%2FLc4AHUiMoCmVonq1Y5PwOYn5DhmsfrKQBCGNavVByh2bUdccE%2B27sv2WDBoCpPoG%2FsRAV3dcZLzguPqn1kvwTps9ePZ3xuokxa1ujBeaQmqCxXmBRn5xvZ8symRGA8HNaq8ZnygGh8zk8jYH5M5P9nDVFzFGXwsArrzCm7Qa4H3RVOJw5oMIyVgM0GOrEBMGBnudfl8f5%2B6%2BIsUik%2B%2FhvAamws3fmldovWIxLqjIJ7oikOkURUdfe4H7QzTLAPWRoJJPnnkvlkARtzZYjCCnwCxbpLFkhMwrlMtjV%2FS4coPn5wb%2F0oxtuzLHtzcT04HjY%2B7eOq2B2QA5B%2FE0AhGCZ7VW7nCIOC1Xl3%2BmUFbwpf8dFEcyBvik3xKOGn9GGEsBnFL9ET5BtLOoKREXZa8S89e9490wFSKj85CC8%2Bita8&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20260226T091703Z&X-Amz-SignedHeaders=host&X-Amz-Expires=300&X-Amz-Credential=ASIAQ3PHCVTY3HOMD67R%2F20260226%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=6f92fb93a725996b0b32be115f77783a612dcf12149a970d4d3be40dd5bd9630&hash=94f99068fba30787a19e8de6f2715457920311abb1a62beaa36168c0e28dff69&host=68042c943591013ac2b2430a89b270f6af2c76d8dfd086a07176afe7c76c2c61&pii=S1877050916320993&tid=spdf-99cb6fd4-f099-46a4-a685-01839bda68c4&sid=13af267d7d65654388082f7-aba231511595gxrqb&type=client&tsoh=d3d3LnNjaWVuY2VkaXJlY3QuY29t&rh=d3d3LnNjaWVuY2VkaXJlY3QuY29t&ua=08175b035304525e06&rr=9d3e58ddecfcc676&cc=fr"
+        "title": "[1] An Integrated Meta-model for Cloud Application Security Modelling — Kritikos & Massonet, ScienceDirect 2016",
+        "link": "https://www.sciencedirect.com/science/article/pii/S1877050916320993"
       }
     ]
   },
@@ -1502,23 +1507,74 @@
     "title": "Platform-level Software Solution",
     "sections": [
       {
-        "headline": "To be filled",
-        "points": []
+        "headline": "Provider Security Capability Matching for Deployment [1]",
+        "points": [
+          {
+            "label": "The problem this solves",
+            "text": "When choosing where to deploy a secure application, the developer has no structured way to know which cloud providers actually satisfy the security requirements. Provider documentation is unstructured, inconsistent, and not machine-readable.",
+            "example": "Developer asks: does AWS support IS-07 data integrity control? — answer is buried in a 200-page PDF"
+          },
+          {
+            "label": "The solution: structured provider security profiles",
+            "text": "Each cloud provider gets a formal CAMEL model that lists exactly which security controls it supports. These profiles are populated automatically from CSA CAIQ questionnaire answers — the industry standard security self-assessment for cloud providers — by checking which controls received positive responses above a defined threshold",
+            "example": "AWS CAIQ answers are parsed — for each security control, if enough questions are answered positively, that control is added to the AWS provider security profile"
+          },
+          {
+            "label": "Deployment plan generated only from matching providers",
+            "text": "The deployment planner compares the application's security requirements against all provider profiles and generates a deployment plan using only providers that satisfy every required control — automatically, without human comparison",
+            "example": "Application needs confidentiality + data isolation — planner generates a deployment plan using only the 2 providers out of 10 whose profiles declare both capabilities"
+          }
+        ]
       }
     ],
-    "tags": [],
-    "refs": []
+    "tags": [
+      "CAMEL",
+      "CAIQ",
+      "CCM",
+      "deployment-planning",
+      "provider-matching",
+      "SPM"
+    ],
+    "refs": [
+      {
+        "title": "[1] An Integrated Meta-model for Cloud Application Security Modelling — Kritikos & Massonet, ScienceDirect 2016",
+        "link": "https://www.sciencedirect.com/science/article/pii/S1877050916320993"
+      }
+    ]
   },
   "Software|Solution|SRM": {
     "title": "Rules-level Software Solution",
     "sections": [
       {
-        "headline": "To be filled",
-        "points": []
+        "headline": "Security-Aware Reconfiguration Rules via SRL Extension [1]",
+        "points": [
+          {
+            "label": "Security rules that watch and react automatically",
+            "text": "The paper extends the CAMEL Scalability Rule Language (SRL) to support security-oriented rules. When a security SLO is violated at runtime, for example a measured metric drops below its threshold, a reconfiguration rule fires automatically and moves the application to a more capable provider",
+            "example": "Security rule: IF incident handling rate < 95% THEN migrate application to provider B which has a higher security capability score"
+          },
+          {
+            "label": "Security controls as hard deployment filters",
+            "text": "Before deployment even starts, required security controls act as hard constraints — any cloud provider that does not declare support for the required controls is automatically excluded from the candidate list",
+            "example": "Application requires 'data encryption at rest' — the system eliminates every provider that did not declare this capability, without the developer doing anything manually"
+          }
+        ]
       }
     ],
-    "tags": [],
-    "refs": []
+    "tags": [
+      "SRL",
+      "reconfiguration",
+      "security-controls",
+      "CCM",
+      "runtime",
+      "SRM"
+    ],
+    "refs": [
+      {
+        "title": "[1] An Integrated Meta-model for Cloud Application Security Modelling — Kritikos & Massonet, ScienceDirect 2016",
+        "link": "https://www.sciencedirect.com/science/article/pii/S1877050916320993"
+      }
+    ]
   },
   "Software|Solution|SDM": {
     "title": "Detection-level Software Solution",
