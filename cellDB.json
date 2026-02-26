@@ -1480,12 +1480,23 @@
     "title": "Application-level Software Solution",
     "sections": [
       {
-        "headline": "To be filled",
-        "points": []
+        "headline": "MDE Security Meta-model for Cloud Application Deployment and Reconfiguration [1]",
+        "points": [
+        {
+          "label": "Security-aware MDE",
+          "text": "Captures high and low-level security requirements as a formal meta-model, used to drive cloud application deployment and reconfiguration rules automatically.",
+          "example": "OCL constraints enforce security semantics — e.g., encrypted storage required for sensitive data classes"
+        }
+      ],
       }
     ],
     "tags": [],
-    "refs": []
+    "refs": [
+      {
+        "title": "[1] An Integrated Meta-Model for Cloud Application Security Modelling",
+        "link": "https://pdf.sciencedirectassets.com/280203/1-s2.0-S1877050916X00221/1-s2.0-S1877050916320993/main.pdf?X-Amz-Security-Token=IQoJb3JpZ2luX2VjEFkaCXVzLWVhc3QtMSJHMEUCIEA4m99V7tJ3xTn4BZFDNHHxPmZP0GOXKikB3cvicumBAiEA85X6uxjuuuG4WKw3apvqxuc5Q9nGTIPDwHraxmFD8dEqswUIIhAFGgwwNTkwMDM1NDY4NjUiDLombD%2FsXs7X8KRvCiqQBfQqyRHXJCKvlwSNT6utnOjpi58smT9I2Qn0e6lrVkvSHaj4LWNoR42wvwJl3rAc0jcjJ0f%2FnEdho9uMUU6JOzZxkXvUpXo1%2BQPyg6Ji8Br1aey5F3meZYI7FGJRC7LFxfGyZxOkoHuLodO10RsweefaXDRtvRs0JYmn2fKV5Poj3kC51KU0svQGWsc2v%2B%2BMt86QVDQpJwhDNAfu%2BJ0evXEGVHWIIGdmLa%2BmH1%2B8jzB8anfRfYSCfde8qf7wBTwViDo6VRdKR%2FE7c1TL2w1Ri%2FAhhyrz3DBnQS0nAP4S60eVkj%2BL4INAae3gvKk5FrEn78iR0lkSYE%2BQ5%2FasNh3CSfsj48jHvst3oiKDFJfV3mhYAmFUAiW5bKpw5cJJVWNou%2BOGBkVRAXvudFkz%2BiTUFspbLIBJsrsWyXKjG%2B9Jlc6zFvTY28rnsUoU3E%2BjWHaviLAB%2Fs1%2FfW30hVUcM5bY3wFpmPQ5bJPp7COFq00dkzw3LG8%2FCSxkH2uImgbBXWWPv8l6OWs8U%2B8r2se6HvnIZZKHzl4QIQib62b3phmgFcjccNmhec3%2FxrNPM%2Fwn7joObuiSQgbRsB8fNxujYdkPBB7PhVeWtafxM3TMeDDa51ENYt9A1pM98za%2Fp1l3aUubR8nG7sSKdlaqg1%2BIlNfpX7sQfIMb8MsE%2BsEBhcMxO5hfYieWQYhVwinjB%2FLc4AHUiMoCmVonq1Y5PwOYn5DhmsfrKQBCGNavVByh2bUdccE%2B27sv2WDBoCpPoG%2FsRAV3dcZLzguPqn1kvwTps9ePZ3xuokxa1ujBeaQmqCxXmBRn5xvZ8symRGA8HNaq8ZnygGh8zk8jYH5M5P9nDVFzFGXwsArrzCm7Qa4H3RVOJw5oMIyVgM0GOrEBMGBnudfl8f5%2B6%2BIsUik%2B%2FhvAamws3fmldovWIxLqjIJ7oikOkURUdfe4H7QzTLAPWRoJJPnnkvlkARtzZYjCCnwCxbpLFkhMwrlMtjV%2FS4coPn5wb%2F0oxtuzLHtzcT04HjY%2B7eOq2B2QA5B%2FE0AhGCZ7VW7nCIOC1Xl3%2BmUFbwpf8dFEcyBvik3xKOGn9GGEsBnFL9ET5BtLOoKREXZa8S89e9490wFSKj85CC8%2Bita8&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20260226T091703Z&X-Amz-SignedHeaders=host&X-Amz-Expires=300&X-Amz-Credential=ASIAQ3PHCVTY3HOMD67R%2F20260226%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=6f92fb93a725996b0b32be115f77783a612dcf12149a970d4d3be40dd5bd9630&hash=94f99068fba30787a19e8de6f2715457920311abb1a62beaa36168c0e28dff69&host=68042c943591013ac2b2430a89b270f6af2c76d8dfd086a07176afe7c76c2c61&pii=S1877050916320993&tid=spdf-99cb6fd4-f099-46a4-a685-01839bda68c4&sid=13af267d7d65654388082f7-aba231511595gxrqb&type=client&tsoh=d3d3LnNjaWVuY2VkaXJlY3QuY29t&rh=d3d3LnNjaWVuY2VkaXJlY3QuY29t&ua=08175b035304525e06&rr=9d3e58ddecfcc676&cc=fr"
+      }
+    ]
   },
   "Software|Solution|SPM": {
     "title": "Platform-level Software Solution",
