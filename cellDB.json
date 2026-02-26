@@ -328,6 +328,15 @@
             "example": ""
           }
         ]
+      },
+      {
+        "headline": "Protecting VM memory pages in transit during migration [2]",
+        "points": [
+          {
+            "label": "Core idea",
+            "text": "During live migration the entire VM memory is transferred as plaintext — exposing sensitive data to anyone on the network. The paper wraps the migration channel in an encrypted tunnel to protect data in transit."
+          }
+        ]
       }
     ],
     "tags": ["storage-integrity", "ECC", "probabilistic-proof"],
@@ -335,6 +344,10 @@
       {
         "title": "[1] An Efficient and Secure Protocol for Ensuring Data Storage Security in Cloud Computing",
         "link": "https://www.ijcsi.org/papers/IJCSI-8-6-1-261-274.pdf"
+      },
+      {
+        "title": "[1] A Framework for Secure Live Migration of Virtual Machines — Anala, Jyoti, Shobha — IEEE ICACCI 2013",
+        "link": "https://ieeexplore.ieee.org/document/6637166"
       }
     ]
   },
@@ -1102,12 +1115,22 @@
     "title": "Platform-level Network Solution",
     "sections": [
       {
-        "headline": "To be filled",
-        "points": []
+        "headline": "Blocking unauthorized traffic during live migration [1]",
+        "points": [
+          {
+            "label": "Core idea",
+            "text": "Live migration exposes inter-VM and host-to-host traffic that standard firewalls cannot see. The paper adds per-VM firewall rules to block this hidden traffic and prevent migration to untrusted hosts."
+          }
+        ]
       }
     ],
-    "tags": [],
-    "refs": []
+    "tags": ["firewall", "live-migration", "network"],
+    "refs": [
+      {
+        "title": "[1] A Framework for Secure Live Migration of Virtual Machines — Anala, Jyoti, Shobha — IEEE ICACCI 2013",
+        "link": "https://ieeexplore.ieee.org/document/6637166"
+      }
+    ]
   },
   "Network|Solution|SRM": {
     "title": "Rules-level Network Solution",
@@ -1124,12 +1147,22 @@
     "title": "Detection-level Network Solution",
     "sections": [
       {
-        "headline": "To be filled",
-        "points": []
+        "headline": "Auto-blocking attacks targeting the migration process [1]",
+        "points": [
+          {
+            "label": "Core idea",
+            "text": "Live migration is a critical window where the VM is vulnerable to network attacks. The paper uses an IDS that monitors traffic and automatically blocks suspicious sources before they can disrupt the migration."
+          }
+        ]
       }
     ],
-    "tags": [],
-    "refs": []
+    "tags": ["IDS", "intrusion-detection", "live-migration", "SDM", "network"],
+    "refs": [
+      {
+        "title": "[1] A Framework for Secure Live Migration of Virtual Machines — Anala, Jyoti, Shobha — IEEE ICACCI 2013",
+        "link": "https://ieeexplore.ieee.org/document/6637166"
+      }
+    ]
   },
   "Access Control|Requirement|SUM": {
     "title": "User-level Access Control Requirement",
@@ -1318,17 +1351,28 @@
     "tags": [],
     "refs": []
   },
-  "Access Control|Solution|SPM": {
+  "AccessControl|Solution|SPM": {
     "title": "Platform-level Access Control Solution",
     "sections": [
       {
-        "headline": "To be filled",
-        "points": []
+        "headline": "Restricting who can trigger a live migration [1]",
+        "points": [
+          {
+            "label": "Core idea",
+            "text": "Live migration has no built-in access control, anyone with admin rights can move any VM anywhere. The paper introduces RBAC to restrict migration privileges to authorized roles only."
+          }
+        ]
       }
     ],
-    "tags": [],
-    "refs": []
+    "tags": ["RBAC", "live-migration", "access-control"],
+    "refs": [
+      {
+        "title": "[1] A Framework for Secure Live Migration of Virtual Machines",
+        "link": "https://ieeexplore.ieee.org/document/6637166"
+      }
+    ]
   },
+
   "Access Control|Solution|SRM": {
     "title": "Rules-level Access Control Solution",
     "sections": [
