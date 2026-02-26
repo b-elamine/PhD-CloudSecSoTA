@@ -23,12 +23,7 @@
         ]
       }
     ],
-    "tags": [
-      "privacy",
-      "transparency",
-      "consent",
-      "user-control"
-    ],
+    "tags": ["privacy", "transparency", "consent", "user-control"],
     "refs": []
   },
   "Data & Computation|Requirement|SAM": {
@@ -55,11 +50,7 @@
         ]
       }
     ],
-    "tags": [
-      "secure-processing",
-      "encryption",
-      "input-validation"
-    ],
+    "tags": ["secure-processing", "encryption", "input-validation"],
     "refs": []
   },
   "Data & Computation|Requirement|SPM": {
@@ -86,11 +77,7 @@
         ]
       }
     ],
-    "tags": [
-      "isolation",
-      "side-channels",
-      "platform-apis"
-    ],
+    "tags": ["isolation", "side-channels", "platform-apis"],
     "refs": []
   },
   "Data & Computation|Requirement|SRM": {
@@ -117,12 +104,7 @@
         ]
       }
     ],
-    "tags": [
-      "policy",
-      "least-privilege",
-      "compliance",
-      "data-flows"
-    ],
+    "tags": ["policy", "least-privilege", "compliance", "data-flows"],
     "refs": []
   },
   "Data & Computation|Requirement|SDM": {
@@ -149,12 +131,7 @@
         ]
       }
     ],
-    "tags": [
-      "monitoring",
-      "integrity-checks",
-      "logging",
-      "forensics"
-    ],
+    "tags": ["monitoring", "integrity-checks", "logging", "forensics"],
     "refs": []
   },
   "Data & Computation|Challenge|SUM": {
@@ -193,11 +170,7 @@
         ]
       }
     ],
-    "tags": [
-      "distributed-computation",
-      "trustworthiness",
-      "verification"
-    ],
+    "tags": ["distributed-computation", "trustworthiness", "verification"],
     "refs": []
   },
   "Data & Computation|Challenge|SRM": {
@@ -241,11 +214,7 @@
         ]
       }
     ],
-    "tags": [
-      "integrity",
-      "confidentiality",
-      "user-impact"
-    ],
+    "tags": ["integrity", "confidentiality", "user-impact"],
     "refs": []
   },
   "Data & Computation|Issue|SAM": {
@@ -361,11 +330,7 @@
         ]
       }
     ],
-    "tags": [
-      "storage-integrity",
-      "ECC",
-      "probabilistic-proof"
-    ],
+    "tags": ["storage-integrity", "ECC", "probabilistic-proof"],
     "refs": [
       {
         "title": "[1] An Efficient and Secure Protocol for Ensuring Data Storage Security in Cloud Computing",
@@ -390,7 +355,7 @@
     "tags": [],
     "refs": []
   },
- "Data & Computation|Solution|SDM": {
+  "Data & Computation|Solution|SDM": {
     "title": "Detection-level Data & Computation Solution",
     "sections": [
       {
@@ -414,7 +379,7 @@
         ]
       }
     ],
-    "tags": ["cloud", "computation-auditing", "storage-integrity", "TPA", "SecCloud"],
+    "tags": [],
     "refs": [
       {
         "title": "[1] Security and privacy for storage and computation in cloud computing",
@@ -657,12 +622,34 @@
     "title": "Application-level Internet & Services Requirement",
     "sections": [
       {
-        "headline": "To be filled",
-        "points": []
+        "headline": "REST API Security Properties Must Be Enforced at the Application Layer [1]",
+         "points": [
+        {
+          "label": "Use-After-Free",
+          "text": "A deleted resource must no longer be accessible via any API operation. The application must enforce resource lifecycle consistency. Any DELETE operation must invalidate all subsequent GET/PUT/PATCH on the same resource path"
+        },
+        {
+          "label": "Resource-Leak Prevention",
+          "text": "A failed resource creation must leave no side-effects in backend state. The application must guarantee atomicity of creation operations. Failed POST/PUT must not register the resource name, quota, or any metadata in backend state"
+        },
+        {
+          "label": "Resource-Hierarchy Isolation",
+          "text": "A child resource must only be accessible through its legitimate parent. Cross-parent access must be rejected at the application logic level. Resource path /parentA/children/child1 must not be accessible via /parentB/children/child1"
+        },
+        {
+          "label": "User-Namespace Isolation",
+          "text": "Resources created under one user token must not be accessible by another user token. Tenant isolation must be enforced at the API layer. Every resource access must validate that the requesting token matches the namespace of the resource owner"
+        }
+      ]
       }
     ],
     "tags": [],
-    "refs": []
+    "refs": [
+       {
+        "title": "[1] Security and privacy for storage and computation in cloud computing",
+        "link": "https://www.sciencedirect.com/science/article/pii/S0020025513003320"
+      }
+    ]
   },
   "Internet & Services|Requirement|SPM": {
     "title": "Platform-level Internet & Services Requirement",
@@ -856,22 +843,22 @@
     "sections": [
       {
         "headline": "REST API Security Property Verification [1]",
-          "points": [
-    {
-      "label": "Stateful fuzzing + active checkers",
-      "text": "Extends REST API fuzzer with 4 rule checkers that actively generate tests to detect security violations beyond crash detection",
-      "example": "Detects deleted resource still accessible (use-after-free), or user A accessing user B's resources (namespace violation)"
-    }
-  ]
-}
-], 
- "tags": ["REST-API", "fuzzing", "active-checking", "cloud-services", "SDM"],
-  "refs": [
-    {
-      "title": "[1] Checking Security Properties of Cloud Services REST APIs",
-      "link": "https://www.microsoft.com/en-us/research/wp-content/uploads/2019/02/paper2.pdf"
-    }
-  ]
+        "points": [
+          {
+            "label": "Stateful fuzzing + active checkers",
+            "text": "Extends REST API fuzzer with 4 rule checkers that actively generate tests to detect security violations beyond crash detection",
+            "example": "Detects deleted resource still accessible (use-after-free), or user A accessing user B's resources (namespace violation)"
+          }
+        ]
+      }
+    ],
+    "tags": ["REST-API", "fuzzing", "active-checking", "cloud-services", "SDM"],
+    "refs": [
+      {
+        "title": "[1] Checking Security Properties of Cloud Services REST APIs",
+        "link": "https://www.microsoft.com/en-us/research/wp-content/uploads/2019/02/paper2.pdf"
+      }
+    ]
   },
   "Network|Requirement|SUM": {
     "title": "User-level Network Requirement",
